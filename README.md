@@ -1,1 +1,2 @@
-<h1>CUSTOM MANGA PROXY FOR UNBLOCK CORS</h1>
+<h2>An api for get data from truyentranhlh</h2>
+
