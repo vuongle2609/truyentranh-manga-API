@@ -1,1 +1,1 @@
-"# custom-manga-proxy" 
+<h1>CUSTOM MANGA PROXY FOR UNBLOCK CORS</h1>
