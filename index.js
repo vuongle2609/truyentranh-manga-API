@@ -8,25 +8,8 @@ const { map } = require("cheerio/lib/api/traversing");
 app.use(cors());
 
 app.get("/", async (req, res) => {
-  const result = {};
-
-  const response = await fetch("https://truyentranhlh.net/");
-  const $ = cheerio.load(response.text());
-
-  result.dayTrending = []
-
-  console.log($('.owl-stage')[0]["children"])
-  $('.owl-stage div:not(.cloned)').map((i, el) => {
-    const title = $(el).find('.series-title').attr("title")
-
-    const animeObj = {
-      title,
-    }
-
-    result.dayTrending.push(animeObj)
-  })
-
-  res.send(result)
+  result = "<h1>an api for get data from truyentranhlh</h1><h2>by vuongle</h2>";
+  res.send(result);
 });
 
 app.get("/manga/:name", async (req, res) => {
