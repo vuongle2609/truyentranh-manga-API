@@ -113,7 +113,7 @@ Mangas Object:
 * status: 2
 <a href="https://custom-manga-proxy.vercel.app/genres?genre=comedy&status=2">
     <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=comedy&status=2</p>
-</a><br>
+</a>
 
 ### sort: filter by condition
 | Number  | Value |
@@ -136,7 +136,7 @@ Mangas Object:
 * sort: 4
 <a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&sort=4">
     <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&sort=4</p>
-</a><br>
+</a>
 
 ### page: set the page base on totalPages<br><br>
 #### example: 
@@ -150,7 +150,7 @@ Mangas Object:
 * page: 40
 <a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&page=40">
     <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&page=40</p>
-</a><br><br>
+</a>
 
 ### Multiple conditions:<br>
 #### example: 
