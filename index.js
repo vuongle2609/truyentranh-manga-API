@@ -7,6 +7,28 @@ const { map } = require("cheerio/lib/api/traversing");
 
 app.use(cors());
 
+app.get("/", async (req, res) => {
+  const result = {};
+
+  const response = await fetch("https://truyentranhlh.net/");
+  const $ = cheerio.load(response.text());
+
+  result.dayTrending = []
+
+  console.log($('.owl-stage')[0]["children"])
+  $('.owl-stage div:not(.cloned)').map((i, el) => {
+    const title = $(el).find('.series-title').attr("title")
+
+    const animeObj = {
+      title,
+    }
+
+    result.dayTrending.push(animeObj)
+  })
+
+  res.send(result)
+});
+
 app.get("/manga/:name", async (req, res) => {
   const name = req.params.name;
   const mangaObj = {};
@@ -133,6 +155,39 @@ app.get("/manga/:name/:chap", async (req, res) => {
 app.get("/genres", async (req, res) => {
   const genre = req.query.genre;
   const status = req.query.status;
+  const sort = req.query.sort;
+  const page = req.query.page;
+  const result = {};
+
+  let statusLink;
+  if (status === "0") {
+    statusLink = "dangtienhanh";
+  } else if (status === "1") {
+    statusLink = "tamngung";
+  } else if (status === "2") {
+    statusLink = "hoanthanh";
+  }
+
+  let sortLink;
+  switch (sort) {
+    case "0":
+      sortLink = "az";
+      break;
+    case "1":
+      sortLink = "za";
+      break;
+    case "2":
+      sortLink = "update";
+      break;
+    case "3":
+      sortLink = "new";
+      break;
+    case "4":
+      sortLink = "top";
+      break;
+    case "5":
+      sortLink = "like";
+  }
 
   if (!genre) {
     const genresList = [
@@ -191,18 +246,55 @@ app.get("/genres", async (req, res) => {
       "Mecha",
       "Cooking",
       "Trùng Sinh",
-      "Gourmet"
-    ]
+      "Gourmet",
+    ];
 
-    res.send(genresList)
+    res.send(genresList);
     return;
   }
 
-  const response = await fetch(`https://truyentranhlh.net/the-loai/${genre}`)
-  const $ = cheerio.load(await response.text())
-  const statusLink = `${status}=1`
-  res.send(`https://truyentranhlh.net/the-loai/${genre}${status ? statusLink : ""}`)
-})
+  const fetchLink = `https://truyentranhlh.net/the-loai/${genre}?${
+    status ? statusLink + "=1&" : ""
+  }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
+  const response = await fetch(fetchLink);
+  const $ = cheerio.load(await response.text());
+
+  result.currentPage = Number(page ? page : 1);
+  const lastPagesLink = $(".pagination_wrap").find("a:last-child").attr("href");
+  result.totalPages = Number(
+    lastPagesLink.slice(lastPagesLink.search("page=") + 5)
+  );
+  result.mangas = [];
+  $(".thumb-item-flow.col-6").map((i, el) => {
+    const title = $(el).find(".series-title").text().trim();
+    const lastChap = $(el)
+      .find(".thumb_attr.chapter-title.text-truncate")
+      .text()
+      .trim();
+
+    const cover = $(el)
+      .find(".content.img-in-ratio")
+      .css("background-image")
+      .replace(/.*\s?url\([\'\"]?/, "")
+      .replace(/[\'\"]?\).*/, "");
+
+    const lastUpdate = $(el).find(".timeago").attr("datetime");
+
+    mangaLink = $(el).find("a").attr("href");
+    const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+
+    const mangaObj = {
+      title,
+      lastChap,
+      cover,
+      mangaEP,
+      lastUpdate,
+    };
+
+    result.mangas.push(mangaObj);
+  });
+  res.send(result);
+});
 
 const port = process.env.port || 3000;
 app.listen(port, () => console.log("listening on port " + port));
