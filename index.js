@@ -101,7 +101,7 @@ app.get("/manga/:name", async (req, res) => {
       chapTitle,
       chapEP,
     };
-    mangaObj.chaps.push(chapFormat);
+    mangaObj.chaps.unshift(chapFormat);
   });
 
   res.send(mangaObj);
