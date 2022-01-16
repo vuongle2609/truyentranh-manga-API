@@ -44,16 +44,15 @@ app.get("/manga/:name", async (req, res) => {
     .text();
   mangaObj.description = $(".summary-content p").text();
   const chaps = $(".list-chapters.at-series");
-  console.log(chaps["children"]['children'])
-  console.log(chaps[0]["children"]);
   mangaObj.chapsTotal = chaps[0]["children"].length;
   mangaObj.chaps = [];
   for (var i = 0; i < mangaObj.chapsTotal; i++) {
       const chapsLink = chaps[0]["children"][i]["attribs"]["href"];
       const chapTitle = chaps[0]["children"][i]["attribs"]["title"]
-      
+      const chapTime = chaps[0]["children"][3]["children"][0]['children'][1]["children"][0]["data"]
       const chapEP = (chapsLink.slice(-(chapsLink.length - name.length - 40)));
       const chapFormat = {
+        chapTime,
         chapTitle,
         chapEP
       }
