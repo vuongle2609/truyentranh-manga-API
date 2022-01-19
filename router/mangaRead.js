@@ -6,7 +6,11 @@ const cheerio = require("cheerio");
 app.get("/:name/:chap", async (req, res) => {
   const name = req.params.name;
   const chap = req.params.chap;
-  const mangaObj = {};
+  const result = {
+    status: 200,
+    message: "Success",
+    data: {},
+  };
 
   const mangaLink = `https://truyentranhlh.net/truyen-tranh/${name}/${chap}`;
   const response = await fetch(mangaLink);
@@ -18,16 +22,16 @@ app.get("/:name/:chap", async (req, res) => {
   const nextLink = $(".rd_sd-button_item2.rd_top-right")
     .attr("href")
     .slice(-(mangaLink.length - name.length - 40));
-  mangaObj.prevChapter = prevLink !== "#" ? prevLink : null;
-  mangaObj.nextChapter = nextLink !== "#" ? nextLink : null;
+  result.data.prevChapter = prevLink !== "#" ? prevLink : null;
+  result.data.nextChapter = nextLink !== "#" ? nextLink : null;
 
-  mangaObj.pages = [];
+  result.data.pages = [];
   $("#chapter-content img").map((i, el) => {
-    mangaObj.pages.push(
+    result.data.pages.push(
       $(el).attr("src") ? $(el).attr("src") : $(el).attr("data-src")
     );
   });
-  res.send(mangaObj);
+  res.send(result);
 });
 
 module.exports = app;

@@ -105,7 +105,7 @@ app.get("/", async (req, res) => {
       "Gourmet",
     ];
 
-    const genresListFilter = [];
+    result.data.genresListFilter = [];
     genresList.map((genre) => {
       genreObj = {};
       genreObj.genre = genre;
@@ -113,10 +113,10 @@ app.get("/", async (req, res) => {
         "https://custom-manga-proxy.vercel.app/genres?genre=" +
         removeVietnameseTones(genre).toLowerCase().replace(/\s/g, "-");
 
-      genresListFilter.push(genreObj);
+        result.data.genresListFilter.push(genreObj);
     });
 
-    res.send(genresListFilter);
+    res.send(result);
     return;
   }
 

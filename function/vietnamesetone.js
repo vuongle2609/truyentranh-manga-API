@@ -30,4 +30,4 @@ function removeVietnameseTones(str) {
   return str;
 }
 
-exports.module = { removeVietnameseTones };
+module.exports = { removeVietnameseTones };

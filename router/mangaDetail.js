@@ -5,44 +5,74 @@ const cheerio = require("cheerio");
 
 app.get("/:name", async (req, res) => {
   const name = req.params.name;
-  const mangaObj = {};
+  const result = {
+    status: 200,
+    message: "Success",
+    data: {},
+  };
 
   const respond = await fetch(`https://truyentranhlh.net/truyen-tranh/${name}`);
+
   const $ = cheerio.load(await respond.text());
-  mangaObj.name = $(".series-name a").text().trim();
-  mangaObj.cover = $(".content.img-in-ratio")
+
+  result.data.name = $(".series-name a").text().trim();
+  result.data.cover = $(".content.img-in-ratio")
     .css("background-image")
     .replace(/.*\s?url\([\'\"]?/, "")
     .replace(/[\'\"]?\).*/, "");
-  mangaObj.genres = [];
-  mangaObj.otherName = [];
-  mangaObj.author = [];
+  result.data.genres = null;
+  result.data.otherName = null;
+  result.data.author = "Chưa được cập nhật";
+
   $(".info-item").each((i, el) => {
     const item = $(el).find(":not(span:first-child) a");
-    switch (i) {
-      case 0:
+
+    const label = $(el).find(".info-name").text();
+
+    switch (label) {
+      case "Tên khác:":
+        result.data.otherName = [];
         $(el)
           .find(":not(span:first-child)")
           .map((i, el) => {
-            mangaObj.otherName.push(el["children"][0]["data"].trim());
+            if ($(el)) {
+              result.data.otherName.push($(el).text().trim());
+            } else {
+              result.data.otherName = null;
+            }
           });
         break;
-      case 1:
+      case "Thể loại:":
+        result.data.genres = [];
         item.map((i, el) => {
-          mangaObj.genres.push(el["children"][0]["children"][0]["data"].trim());
+          if (item) {
+            result.data.genres.push($(el).text().trim());
+          } else {
+            result.data.genres = null;
+          }
         });
         break;
-      case 2:
+      case "Tác giả:":
+        result.data.author = [];
         item.map((i, el) => {
-          mangaObj.author.push(el["children"][0]["data"].trim());
+          if ($(el) && $(el).text() !== "Đang cập nhật") {
+            console;
+            result.data.author.push($(el).text().trim());
+          } else {
+            result.data.author = "Chưa được cập nhật";
+          }
         });
         break;
-      case 3:
-        mangaObj.status = item.text();
+      case "Tình trạng:":
+        item
+          ? (result.data.status = item.text())
+          : (result.data.status = "không xác định");
     }
   });
-  mangaObj.lastUpdate = $(".timeago").text().trim();
-  mangaObj.rating = parseInt(
+
+  result.data.lastUpdate = $(".timeago").text().trim();
+
+  result.data.rating = parseInt(
     $(".statistic-item:nth-child(2) .statistic-value")
       .clone()
       .children()
@@ -50,7 +80,8 @@ app.get("/:name", async (req, res) => {
       .end()
       .text()
   );
-  mangaObj.view = parseInt(
+
+  result.data.view = parseInt(
     $(".statistic-item:nth-child(3) .statistic-value")
       .clone()
       .children()
@@ -58,7 +89,8 @@ app.get("/:name", async (req, res) => {
       .end()
       .text()
   );
-  mangaObj.related = [];
+
+  result.data.related = [];
   $(".others-list li").map((i, el) => {
     const name = $(el).find(".others-name a").text().trim();
     const mangaLink = $(el).find(".others-name a").attr("href");
@@ -75,12 +107,16 @@ app.get("/:name", async (req, res) => {
       description,
       cover,
     };
-    mangaObj.related.push(manga);
+
+    result.data.related.push(manga);
   });
-  mangaObj.description = $(".summary-content p").text().trim();
+
+  result.data.description = $(".summary-content p").text().trim();
+
   const chaps = $(".list-chapters.at-series");
-  mangaObj.chapsTotal = chaps[0]["children"].length;
-  mangaObj.chaps = [];
+  result.data.chapsTotal = chaps[0]["children"].length;
+
+  result.data.chaps = [];
 
   chaps[0]["children"].map((chap) => {
     const chapsLink = chap["attribs"]["href"];
@@ -92,10 +128,10 @@ app.get("/:name", async (req, res) => {
       chapTitle,
       chapEP,
     };
-    mangaObj.chaps.unshift(chapFormat);
+    result.data.chaps.unshift(chapFormat);
   });
 
-  res.send(mangaObj);
+  res.send(result);
 });
 
 module.exports = app;
