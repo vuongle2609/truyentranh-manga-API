@@ -15,20 +15,18 @@ app.get("/:name", async (req, res) => {
 
   const $ = cheerio.load(await respond.text());
 
-  result.data.cover = $(".content.img-in-ratio")
-    .css("background-image")
-
-  if (result.data.cover === undefined) {
+  if ($(".content.img-in-ratio").css("background-image") === undefined) {
     result.status = 404;
-    result.message = 'not found';
+    result.message = "not found";
     result.data = null;
-    return res.status(404).send(result)
+    return res.status(404).send(result);
   }
 
   result.data.name = $(".series-name a").text().trim();
-  result.data.cover
-    .replace(/.*\s?url\([\'\"]?/, "")
-    .replace(/[\'\"]?\).*/, "");
+  result.data.cover = $(".content.img-in-ratio")
+    .css("background-image")
+    .replace("url('", "")
+    .replace("')", "");
   result.data.genres = null;
   result.data.otherName = null;
   result.data.author = "Chưa được cập nhật";
@@ -108,8 +106,8 @@ app.get("/:name", async (req, res) => {
     const cover = $(el)
       .find(".content.img-in-ratio")
       .css("background-image")
-      .replace(/.*\s?url\([\'\"]?/, "")
-      .replace(/[\'\"]?\).*/, "");
+      .replace("url('", "")
+      .replace("')", "");
     const manga = {
       name,
       mangaEP,
