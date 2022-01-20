@@ -12,9 +12,14 @@
     <p align="left">https://custom-manga-proxy.vercel.app/</p>
 </a>
 
+## List of mangas
+<a href="https://custom-manga-proxy.vercel.app/list?list=true">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true</p>
+</a>
+
 ## List of genres
-<a href="https://custom-manga-proxy.vercel.app/genres">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres</p>
+<a href="https://custom-manga-proxy.vercel.app/list">
+    <p align="left">https://custom-manga-proxy.vercel.app/list</p>
 </a>
 
 ## Manga page
@@ -67,18 +72,23 @@ example:
 * nextChapter (string): next chapter EP
 * pages (array): list of chapter's pages<br><br>
 
-## Genres page
+## Genres and mangas page
 
 #### example: 
 
+* get a list of mangas
+<a href="https://custom-manga-proxy.vercel.app/list?list=true">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true</p>
+</a>
+
 * genres: romance
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance</p>
 </a>
 
 * genres: comedy
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=comedy">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=comedy</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=comedy">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=comedy</p>
 </a>
 
 #### Attributes
@@ -103,16 +113,23 @@ Mangas Object:
 | 2  | Completed  |
 
 #### example: 
+
+* manga list
+* status: 1
+<a href="https://custom-manga-proxy.vercel.app/list?list=true&status=1">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&status=1</p>
+</a>
+
 * genres: romance
 * status: 0
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&status=0">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&status=0</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&status=0">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&status=0</p>
 </a>
 
 * genres: comedy
 * status: 2
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=comedy&status=2">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=comedy&status=2</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=comedy&status=2">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=comedy&status=2</p>
 </a>
 
 ### sort: filter by condition
@@ -126,47 +143,69 @@ Mangas Object:
 | 5  | Most Liked  |
 
 #### example: 
+
+* manga list
+* sort: 3
+<a href="https://custom-manga-proxy.vercel.app/list?list=true&sort=3">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&sort=3</p>
+</a>
+
 * genres: romance
 * sort: 1
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&sort=1">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&sort=1</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&sort=1">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&sort=1</p>
 </a>
 
 * genres: romance
 * sort: 4
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&sort=4">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&sort=4</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&sort=4">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&sort=4</p>
 </a>
 
 ### page: set the page base on totalPages<br><br>
 #### example: 
+
+* manga list
+* page: 20
+<a href="https://custom-manga-proxy.vercel.app/list?list=true&page=20">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&page=20</p>
+</a>
+
 * genres: romance
 * page: 10
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&page=10">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&page=10</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&page=10">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&page=10</p>
 </a>
 
 * genres: romance
 * page: 40
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&page=40">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&page=40</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&page=40">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&page=40</p>
 </a>
 
 ### Multiple conditions:<br>
 #### example: 
 
+* manga list
+* status: 0
+* sort: 3
+* page: 10
+<a href="https://custom-manga-proxy.vercel.app/list?list=true&status=0&sort=3&page=10">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&status=0&sort=3&page=10</p>
+</a>
+
 * genres: romance
 * status: 2
 * sort: 1
 * page: 8
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=romance&status=2&sort=1&page=8">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=romance&status=2&sort=1&page=8</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&status=2&sort=1&page=8">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&status=2&sort=1&page=8</p>
 </a>
 
 * genres: comedy
 * status: 0
 * sort: 4
 * page: 20
-<a href="https://custom-manga-proxy.vercel.app/genres?genre=comedy&status=0&sort=4&page=20">
-    <p align="left">https://custom-manga-proxy.vercel.app/genres?genre=comedy&status=0&sort=4&page=20</p>
+<a href="https://custom-manga-proxy.vercel.app/list?genre=comedy&status=0&sort=4&page=20">
+    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=comedy&status=0&sort=4&page=20</p>
 </a>
