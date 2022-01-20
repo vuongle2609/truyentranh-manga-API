@@ -22,6 +22,23 @@
     <p align="left">https://custom-manga-proxy.vercel.app/list</p>
 </a>
 
+## Home
+<a href="https://custom-manga-proxy.vercel.app/home">
+    <p align="left">https://custom-manga-proxy.vercel.app/home</p>
+</a>
+
+#### Attributes
+
+* daily (array): list of daily most view manga
+* newUpdate (array): list of recently updated manga
+
+Mangas Object: 
+* title (string): the title of the manga
+* lastChap (string): title of the last chapter for now
+* cover (string): cover of the manga
+* lastUpdate (data): date for the recently updated manga
+* mangaEP (string): endpoint of the manga use to indicate manga in the detail manga API
+
 ## Manga page
 
 #### example: 
@@ -37,10 +54,10 @@
 
 #### Attributes
 
-* name (string): The title of the manga
+* title (string): The title of the manga
 * cover (string): Manga cover's link
 * genres (array): An array of manga genres
-* otherName (array): Same as above but contains manga other names
+* otherTitle (array): Same as above but contains manga other names
 * author (array): List of authors
 * status (string): Status of the manga
 * lastUpdate (date): Time since the last updated

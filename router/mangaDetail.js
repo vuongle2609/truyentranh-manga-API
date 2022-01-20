@@ -22,13 +22,13 @@ app.get("/:name", async (req, res) => {
     return res.status(404).send(result);
   }
 
-  result.data.name = $(".series-name a").text().trim();
+  result.data.title = $(".series-name a").text().trim();
   result.data.cover = $(".content.img-in-ratio")
     .css("background-image")
     .replace("url('", "")
     .replace("')", "");
   result.data.genres = null;
-  result.data.otherName = null;
+  result.data.otherTitle = null;
   result.data.author = "Chưa được cập nhật";
 
   $(".info-item").each((i, el) => {
@@ -38,14 +38,14 @@ app.get("/:name", async (req, res) => {
 
     switch (label) {
       case "Tên khác:":
-        result.data.otherName = [];
+        result.data.otherTitle = [];
         $(el)
           .find(":not(span:first-child)")
           .map((i, el) => {
             if ($(el)) {
-              result.data.otherName.push($(el).text().trim());
+              result.data.otherTitle.push($(el).text().trim());
             } else {
-              result.data.otherName = null;
+              result.data.otherTitle = null;
             }
           });
         break;
@@ -99,7 +99,7 @@ app.get("/:name", async (req, res) => {
 
   result.data.related = [];
   $(".others-list li").map((i, el) => {
-    const name = $(el).find(".others-name a").text().trim();
+    const title = $(el).find(".others-name a").text().trim();
     const mangaLink = $(el).find(".others-name a").attr("href");
     const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
     const description = $(el).find(".series-summary").text().trim();
@@ -109,7 +109,7 @@ app.get("/:name", async (req, res) => {
       .replace("url('", "")
       .replace("')", "");
     const manga = {
-      name,
+      title,
       mangaEP,
       description,
       cover,
