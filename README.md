@@ -9,18 +9,18 @@
 # Usage
 
 ## List of mangas
-<a href="https://custom-manga-proxy.vercel.app/list?list=true">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true</p>
+<a href="https://mangalh-api.vercel.app/list?list=true">
+    <p align="left">https://mangalh-api.vercel.app/list?list=true</p>
 </a>
 
 ## List of genres
-<a href="https://custom-manga-proxy.vercel.app/list">
-    <p align="left">https://custom-manga-proxy.vercel.app/list</p>
+<a href="https://mangalh-api.vercel.app/list">
+    <p align="left">https://mangalh-api.vercel.app/list</p>
 </a>
 
 ## Home
-<a href="https://custom-manga-proxy.vercel.app/home">
-    <p align="left">https://custom-manga-proxy.vercel.app/home</p>
+<a href="https://mangalh-api.vercel.app/home">
+    <p align="left">https://mangalh-api.vercel.app/home</p>
 </a>
 
 #### Attributes
@@ -39,13 +39,13 @@ Mangas Object:
 
 #### example: 
 * mangaEP: sono-bisque-doll-wa-koi-wo-suru
-<a href="https://custom-manga-proxy.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru">
-    <p align="left">https://custom-manga-proxy.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru</p>
+<a href="https://mangalh-api.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru">
+    <p align="left">https://mangalh-api.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru</p>
 </a>
 
 * mangaEP: go-toubun-no-hanayome
-<a href="https://custom-manga-proxy.vercel.app/manga/go-toubun-no-hanayome">
-    <p align="left">https://custom-manga-proxy.vercel.app/manga/go-toubun-no-hanayome</p>
+<a href="https://mangalh-api.vercel.app/manga/go-toubun-no-hanayome">
+    <p align="left">https://mangalh-api.vercel.app/manga/go-toubun-no-hanayome</p>
 </a>
 
 #### Attributes
@@ -69,14 +69,14 @@ Mangas Object:
 example: 
 * mangaEP: go-toubun-no-hanayome
 * chapEP: chap-122-285
-<a href="https://custom-manga-proxy.vercel.app/manga/go-toubun-no-hanayome/chap-122-285">
-    <p align="left">https://custom-manga-proxy.vercel.app/manga/go-toubun-no-hanayome/chap-122-285</p>
+<a href="https://mangalh-api.vercel.app/manga/go-toubun-no-hanayome/chap-122-285">
+    <p align="left">https://mangalh-api.vercel.app/manga/go-toubun-no-hanayome/chap-122-285</p>
 </a>
 
 * mangaEP: sono-bisque-doll-wa-koi-wo-suru
 * chapEP: chapter-46-140
-<a href="https://custom-manga-proxy.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru/chapter-46-140">
-    <p align="left">https://custom-manga-proxy.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru/chapter-46-140</p>
+<a href="https://mangalh-api.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru/chapter-46-140">
+    <p align="left">https://mangalh-api.vercel.app/manga/sono-bisque-doll-wa-koi-wo-suru/chapter-46-140</p>
 </a>
 
 #### Attributes
@@ -90,18 +90,18 @@ example:
 #### example: 
 
 * get a list of mangas
-<a href="https://custom-manga-proxy.vercel.app/list?list=true">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true</p>
+<a href="https://mangalh-api.vercel.app/list?list=true">
+    <p align="left">https://mangalh-api.vercel.app/list?list=true</p>
 </a>
 
 * genres: romance
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance</p>
 </a>
 
 * genres: comedy
-<a href="https://custom-manga-proxy.vercel.app/list?genre=comedy">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=comedy</p>
+<a href="https://mangalh-api.vercel.app/list?genre=comedy">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=comedy</p>
 </a>
 
 #### Attributes
@@ -129,20 +129,20 @@ Mangas Object:
 
 * manga list
 * status: 1
-<a href="https://custom-manga-proxy.vercel.app/list?list=true&status=1">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&status=1</p>
+<a href="https://mangalh-api.vercel.app/list?list=true&status=1">
+    <p align="left">https://mangalh-api.vercel.app/list?list=true&status=1</p>
 </a>
 
 * genres: romance
 * status: 0
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&status=0">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&status=0</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance&status=0">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance&status=0</p>
 </a>
 
 * genres: comedy
 * status: 2
-<a href="https://custom-manga-proxy.vercel.app/list?genre=comedy&status=2">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=comedy&status=2</p>
+<a href="https://mangalh-api.vercel.app/list?genre=comedy&status=2">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=comedy&status=2</p>
 </a>
 
 ### sort: filter by condition
@@ -159,20 +159,20 @@ Mangas Object:
 
 * manga list
 * sort: 3
-<a href="https://custom-manga-proxy.vercel.app/list?list=true&sort=3">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&sort=3</p>
+<a href="https://mangalh-api.vercel.app/list?list=true&sort=3">
+    <p align="left">https://mangalh-api.vercel.app/list?list=true&sort=3</p>
 </a>
 
 * genres: romance
 * sort: 1
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&sort=1">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&sort=1</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance&sort=1">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance&sort=1</p>
 </a>
 
 * genres: romance
 * sort: 4
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&sort=4">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&sort=4</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance&sort=4">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance&sort=4</p>
 </a>
 
 ### page: set the page base on totalPages<br><br>
@@ -180,20 +180,20 @@ Mangas Object:
 
 * manga list
 * page: 20
-<a href="https://custom-manga-proxy.vercel.app/list?list=true&page=20">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&page=20</p>
+<a href="https://mangalh-api.vercel.app/list?list=true&page=20">
+    <p align="left">https://mangalh-api.vercel.app/list?list=true&page=20</p>
 </a>
 
 * genres: romance
 * page: 10
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&page=10">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&page=10</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance&page=10">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance&page=10</p>
 </a>
 
 * genres: romance
 * page: 40
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&page=40">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&page=40</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance&page=40">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance&page=40</p>
 </a>
 
 ### Multiple conditions:<br>
@@ -203,22 +203,22 @@ Mangas Object:
 * status: 0
 * sort: 3
 * page: 10
-<a href="https://custom-manga-proxy.vercel.app/list?list=true&status=0&sort=3&page=10">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?list=true&status=0&sort=3&page=10</p>
+<a href="https://mangalh-api.vercel.app/list?list=true&status=0&sort=3&page=10">
+    <p align="left">https://mangalh-api.vercel.app/list?list=true&status=0&sort=3&page=10</p>
 </a>
 
 * genres: romance
 * status: 2
 * sort: 1
 * page: 8
-<a href="https://custom-manga-proxy.vercel.app/list?genre=romance&status=2&sort=1&page=8">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=romance&status=2&sort=1&page=8</p>
+<a href="https://mangalh-api.vercel.app/list?genre=romance&status=2&sort=1&page=8">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=romance&status=2&sort=1&page=8</p>
 </a>
 
 * genres: comedy
 * status: 0
 * sort: 4
 * page: 20
-<a href="https://custom-manga-proxy.vercel.app/list?genre=comedy&status=0&sort=4&page=20">
-    <p align="left">https://custom-manga-proxy.vercel.app/list?genre=comedy&status=0&sort=4&page=20</p>
+<a href="https://mangalh-api.vercel.app/list?genre=comedy&status=0&sort=4&page=20">
+    <p align="left">https://mangalh-api.vercel.app/list?genre=comedy&status=0&sort=4&page=20</p>
 </a>
