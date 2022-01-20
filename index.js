@@ -4,6 +4,7 @@ const cors = require("cors");
 const genres = require("./router/genres")
 const mangaDetail = require("./router/mangaDetail")
 const mangaRead = require("./router/mangaRead")
+const home = require("./router/home")
 
 app.use(cors());
 
@@ -17,6 +18,8 @@ app.use('/manga', mangaDetail)
 app.use('/manga', mangaRead )
 
 app.use('/genres', genres)
+
+app.use('/home', home)
 
 const port = process.env.port || 3000;
 app.listen(port, () => console.log("listening on port " + port));
