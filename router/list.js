@@ -111,7 +111,7 @@ app.get("/", async (req, res) => {
       genreObj = {};
       genreObj.genre = genre;
       genreObj.api =
-        "https://custom-manga-proxy.vercel.app/genres?genre=" +
+        "https://mangalh-api.vercel.app/genres?genre=" +
         removeVietnameseTones(genre).toLowerCase().replace(/\s/g, "-");
 
         result.data.genresListFilter.push(genreObj);
