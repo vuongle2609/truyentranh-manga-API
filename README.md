@@ -7,10 +7,6 @@
 * get pages image src
 
 # Usage
-## Main page
-<a href="https://custom-manga-proxy.vercel.app/">
-    <p align="left">https://custom-manga-proxy.vercel.app/</p>
-</a>
 
 ## List of mangas
 <a href="https://custom-manga-proxy.vercel.app/list?list=true">
