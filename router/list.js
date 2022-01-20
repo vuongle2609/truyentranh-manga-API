@@ -6,6 +6,7 @@ const { removeVietnameseTones } = require("../function/vietnamesetone");
 
 app.get("/", async (req, res) => {
   const genre = req.query.genre;
+  const list = req.query.list;
   const status = req.query.status;
   const sort = req.query.sort;
   const page = req.query.page;
@@ -45,7 +46,7 @@ app.get("/", async (req, res) => {
       sortLink = "like";
   }
 
-  if (!genre) {
+  if (!genre && !list) {
     const genresList = [
       "Action",
       "Adult",
@@ -120,9 +121,16 @@ app.get("/", async (req, res) => {
     return;
   }
 
-  const fetchLink = `https://truyentranhlh.net/the-loai/${genre}?${
+  let fetchLink
+  if (genre) {
+    fetchLink = `https://truyentranhlh.net/the-loai/${genre}?${
     status ? statusLink + "=1&" : ""
   }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
+  } else if (list) {
+    fetchLink = `https://truyentranhlh.net/danh-sach?${
+    status ? statusLink + "=1&" : ""
+  }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
+  }
 
   const response = await fetch(fetchLink);
   const $ = cheerio.load(await response.text());

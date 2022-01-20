@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const genres = require("./router/genres")
+const list = require("./router/list")
 const mangaDetail = require("./router/mangaDetail")
 const mangaRead = require("./router/mangaRead")
 const home = require("./router/home")
@@ -13,13 +13,13 @@ app.get("/", async (req, res) => {
   res.send(result);
 });
 
+app.use('/home', home)
+
+app.use('/list', list)
+
 app.use('/manga', mangaDetail)
 
 app.use('/manga', mangaRead )
-
-app.use('/genres', genres)
-
-app.use('/home', home)
 
 const port = process.env.port || 3000;
 app.listen(port, () => console.log("listening on port " + port));

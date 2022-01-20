@@ -42,6 +42,7 @@ app.get("/", async (req, res) => {
     const mangaOBJ = {};
 
     mangaOBJ.title = $(el).find(".thumb_attr.series-title").text().trim();
+
     mangaOBJ.lastChap = $(el).find(".thumb-detail").text().trim();
     mangaOBJ.cover = $(el)
       .find(".content.img-in-ratio")
@@ -54,7 +55,7 @@ app.get("/", async (req, res) => {
     mangaOBJ.mangaEP = mangaEP;
 
     mangaOBJ.lastUpdate = $(el).find(".timeago").attr("title");
-    result.data.newUpdate.push(mangaOBJ);
+    if (mangaOBJ.title.length !== 0) result.data.newUpdate.push(mangaOBJ);
   });
 
   res.send(result);
