@@ -22,6 +22,9 @@ app.get("/:name/:chap", async (req, res) => {
   const nextLink = $(".rd_sd-button_item2.rd_top-right")
     .attr("href")
     .slice(-(mangaLink.length - name.length - 40));
+  const currentChapter = $(".breadcrumb li:last-child").text();
+
+  result.data.currentChapter = currentChapter;
   result.data.prevChapter = prevLink !== "#" ? prevLink : null;
   result.data.nextChapter = nextLink !== "#" ? nextLink : null;
 

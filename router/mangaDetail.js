@@ -15,9 +15,18 @@ app.get("/:name", async (req, res) => {
 
   const $ = cheerio.load(await respond.text());
 
-  result.data.name = $(".series-name a").text().trim();
   result.data.cover = $(".content.img-in-ratio")
     .css("background-image")
+
+  if (result.data.cover === undefined) {
+    result.status = 404;
+    result.message = 'not found';
+    result.data = null;
+    return res.status(404).send(result)
+  }
+
+  result.data.name = $(".series-name a").text().trim();
+  result.data.cover
     .replace(/.*\s?url\([\'\"]?/, "")
     .replace(/[\'\"]?\).*/, "");
   result.data.genres = null;

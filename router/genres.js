@@ -127,20 +127,25 @@ app.get("/", async (req, res) => {
   const response = await fetch(fetchLink);
   const $ = cheerio.load(await response.text());
 
-  const lastPagesLink = $(".pagination_wrap").find("a:last-child").attr("href");
+  const mangaBlock = $('.thumb-item-flow.col-6.col-md-3')
 
-  if (!lastPagesLink)
-    return res.status(404).send({
-      status: 404,
-      message: "bad resquest",
-      data: null,
-    });
+  if (!mangaBlock)
+  return res.status(404).send({
+    status: 404,
+    message: "bad resquest",
+    data: null,
+  });
+  const lastPagesLink = $(".pagination_wrap").find("a:last-child").attr("href");
 
   result.data.currentPage = Number(page ? page : 1);
 
-  result.data.totalPages = Number(
-    lastPagesLink.slice(lastPagesLink.search("page=") + 5)
-  );
+  if (lastPagesLink) {
+    result.data.totalPages = Number(
+      lastPagesLink.slice(lastPagesLink.search("page=") + 5)
+    );
+  } else {
+    result.data.totalPages = 1
+  }
   result.data.mangas = [];
   $(".thumb-item-flow.col-6").map((i, el) => {
     const title = $(el).find(".series-title").text().trim();
