@@ -12,16 +12,21 @@ app.get("/:name/:chap", async (req, res) => {
     data: {},
   };
 
+  const testL = "https://truyentranhlh.net/truyen-tranh/";
   const mangaLink = `https://truyentranhlh.net/truyen-tranh/${name}/${chap}`;
+  console.log(mangaLink);
+  const cut = mangaLink.slice(testL.length);
   const response = await fetch(mangaLink);
   const $ = cheerio.load(await response.text());
 
   const prevLink = $(".rd_sd-button_item2.rd_top-left")
     .attr("href")
-    .slice(-(mangaLink.length - name.length - 40));
+    .slice(testL.length)
+    .slice(cut.indexOf("/") + 1);
   const nextLink = $(".rd_sd-button_item2.rd_top-right")
     .attr("href")
-    .slice(-(mangaLink.length - name.length - 40));
+    .slice(testL.length)
+    .slice(cut.indexOf("/") + 1);
   const currentChapter = $(".breadcrumb li:last-child").text();
 
   result.data.currentChapter = currentChapter;
@@ -33,6 +38,22 @@ app.get("/:name/:chap", async (req, res) => {
     result.data.pages.push(
       $(el).attr("src") ? $(el).attr("src") : $(el).attr("data-src")
     );
+  });
+
+  result.data.chapterList = [];
+
+  $("#chap_list li").map((i, el) => {
+    chapterObj = {};
+
+    chapterObj.chapter = $(el).text().trim();
+
+    chapterObj.chapEP = $(el)
+      .find("a")
+      .attr("href")
+      .slice(testL.length)
+      .slice(cut.indexOf("/") + 1);
+
+    result.data.chapterList.push(chapterObj);
   });
   res.send(result);
 });
