@@ -110,9 +110,7 @@ app.get("/", async (req, res) => {
     genresList.map((genre) => {
       genreObj = {};
       genreObj.genre = genre;
-      genreObj.api =
-        "https://mangalh-api.vercel.app/list?genre=" +
-        removeVietnameseTones(genre).toLowerCase().replace(/\s/g, "-");
+      genreObj.EP = removeVietnameseTones(genre).toLowerCase().replace(/\s/g, "-");
 
         result.data.genresListFilter.push(genreObj);
     });
