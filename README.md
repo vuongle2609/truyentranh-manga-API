@@ -222,3 +222,9 @@ Mangas Object:
 <a href="https://mangalh-api.vercel.app/list?genre=comedy&status=0&sort=4&page=20">
     <p align="left">https://mangalh-api.vercel.app/list?genre=comedy&status=0&sort=4&page=20</p>
 </a>
+
+### Random manga:<br>
+#### example: 
+<a href="https://mangalh-api.vercel.app/random">
+    <p align="left">https://mangalh-api.vercel.app/random</p>
+</a>

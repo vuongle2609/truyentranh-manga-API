@@ -6,6 +6,7 @@ const mangaDetail = require("./router/mangaDetail");
 const mangaRead = require("./router/mangaRead");
 const home = require("./router/home");
 const search = require("./router/search");
+const random = require("./router/random");
 
 app.use(cors());
 
@@ -21,6 +22,8 @@ app.use("/list", list);
 app.use("/manga", mangaDetail);
 
 app.use("/manga", mangaRead);
+
+app.use('/random', random)
 
 app.use("/search", search);
 
