@@ -38,6 +38,8 @@ app.get("/", async (req, res) => {
   // get newest
   result.data.newUpdate = [];
 
+  result.data.newManga = [];
+
   $(".card-body .row .thumb-item-flow.col-6").map((i, el) => {
     const mangaOBJ = {};
 
@@ -55,7 +57,13 @@ app.get("/", async (req, res) => {
     mangaOBJ.mangaEP = mangaEP;
 
     mangaOBJ.lastUpdate = $(el).find(".timeago").attr("title");
-    if (mangaOBJ.title.length !== 0) result.data.newUpdate.push(mangaOBJ);
+    if (mangaOBJ.title.length !== 0) {
+      if (i < 27) {
+        result.data.newUpdate.push(mangaOBJ);
+      } else {
+        result.data.newManga.push(mangaOBJ);
+      }
+    }
   });
 
   res.send(result);
