@@ -26,7 +26,8 @@ app.get("/:name", async (req, res) => {
   result.data.cover = $(".content.img-in-ratio")
     .css("background-image")
     .replace("url('", "")
-    .replace("')", "");
+    .replace("')", "")
+    .replaceAll("&quot;", "");
   result.data.genres = null;
   result.data.otherTitle = null;
   result.data.author = "Chưa được cập nhật";
@@ -98,27 +99,29 @@ app.get("/:name", async (req, res) => {
   );
 
   result.data.related = [];
-  $(".others-list li").map((i, el) => {
-    const title = $(el).find(".others-name a").text().trim();
-    const mangaLink = $(el).find(".others-name a").attr("href");
-    if (!mangaLink) return null
+  $(".others-list li")
+    .map((i, el) => {
+      const title = $(el).find(".others-name a").text().trim();
+      const mangaLink = $(el).find(".others-name a").attr("href");
+      if (!mangaLink) return null;
 
-    const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
-    const description = $(el).find(".series-summary").text().trim();
-    const cover = $(el)
-      .find(".content.img-in-ratio")
-      .css("background-image")
-      .replace("url('", "")
-      .replace("')", "");
-    const manga = {
-      title,
-      mangaEP,
-      description,
-      cover,
-    };
+      const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+      const description = $(el).find(".series-summary").text().trim();
+      const cover = $(el)
+        .find(".content.img-in-ratio")
+        .css("background-image")
+        .replace("url('", "")
+        .replace("')", "");
+      const manga = {
+        title,
+        mangaEP,
+        description,
+        cover,
+      };
 
-    result.data.related.push(manga);
-  }).filter(Boolean);
+      result.data.related.push(manga);
+    })
+    .filter(Boolean);
 
   result.data.description = $(".summary-content p").text().trim();
 

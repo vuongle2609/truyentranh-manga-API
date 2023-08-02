@@ -25,7 +25,8 @@ app.get("/", async (req, res) => {
       .find(".content.img-in-ratio")
       .css("background-image")
       .replace("url('", "")
-      .replace("')", "");
+      .replace("')", "")
+      .replaceAll("&quot;", "");
 
     const mangaLink = $(el).find(".thumb-wrapper a").attr("href");
     const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
@@ -50,7 +51,8 @@ app.get("/", async (req, res) => {
       .find(".content.img-in-ratio")
       .css("background-image")
       .replace("url('", "")
-      .replace("')", "");
+      .replace("')", "")
+      .replaceAll("&quot;", "");
 
     const mangaLink = $(el).find(".thumb-wrapper a").attr("href");
     const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
