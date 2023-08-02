@@ -101,6 +101,8 @@ app.get("/:name", async (req, res) => {
   $(".others-list li").map((i, el) => {
     const title = $(el).find(".others-name a").text().trim();
     const mangaLink = $(el).find(".others-name a").attr("href");
+    if (!mangaLink) return null
+
     const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
     const description = $(el).find(".series-summary").text().trim();
     const cover = $(el)
@@ -116,7 +118,7 @@ app.get("/:name", async (req, res) => {
     };
 
     result.data.related.push(manga);
-  });
+  }).filter(Boolean);
 
   result.data.description = $(".summary-content p").text().trim();
 
