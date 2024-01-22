@@ -96,7 +96,7 @@ app.get("/", async (req, res) => {
     const lastUpdate = $(el).find(".timeago").attr("datetime");
 
     mangaLink = $(el).find("a").attr("href");
-    const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+    const mangaEP = mangaLink.split("/truyen-tranh/")[1];
 
     const mangaObj = {
       title,

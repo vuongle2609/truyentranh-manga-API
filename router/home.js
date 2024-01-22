@@ -29,7 +29,7 @@ app.get("/", async (req, res) => {
       .replaceAll("&quot;", "");
 
     const mangaLink = $(el).find(".thumb-wrapper a").attr("href");
-    const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+    const mangaEP = mangaLink.split("/truyen-tranh/")[1];
     mangaOBJ.mangaEP = mangaEP;
 
     mangaOBJ.lastUpdate = $(el).find("time").attr("title");
@@ -55,7 +55,7 @@ app.get("/", async (req, res) => {
       .replaceAll("&quot;", "");
 
     const mangaLink = $(el).find(".thumb-wrapper a").attr("href");
-    const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+    const mangaEP = mangaLink.split("/truyen-tranh/")[1];
     mangaOBJ.mangaEP = mangaEP;
 
     mangaOBJ.lastUpdate = $(el).find(".timeago").attr("title");

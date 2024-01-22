@@ -105,7 +105,7 @@ app.get("/:name", async (req, res) => {
       const mangaLink = $(el).find(".others-name a").attr("href");
       if (!mangaLink) return null;
 
-      const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+      const mangaEP = mangaLink.split("/truyen-tranh/")[1];
       const description = $(el).find(".series-summary").text().trim();
       const cover = $(el)
         .find(".content.img-in-ratio")

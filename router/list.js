@@ -110,37 +110,43 @@ app.get("/", async (req, res) => {
     genresList.map((genre) => {
       genreObj = {};
       genreObj.genre = genre;
-      genreObj.EP = removeVietnameseTones(genre).toLowerCase().replace(/\s/g, "-");
+      genreObj.EP = removeVietnameseTones(genre)
+        .toLowerCase()
+        .replace(/\s/g, "-");
 
-        result.data.genresListFilter.push(genreObj);
+      result.data.genresListFilter.push(genreObj);
     });
 
     res.send(result);
     return;
   }
 
-  let fetchLink
+  let fetchLink;
   if (genre) {
     fetchLink = `https://truyenlh.com/the-loai/${genre}?${
-    status ? statusLink + "=1&" : ""
-  }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
+      status ? statusLink + "=1&" : ""
+    }${sort ? "sort=" + sortLink + "&" : ""}${
+      page ? "page=" + page : "page=1"
+    }`;
   } else if (list) {
     fetchLink = `https://truyenlh.com/danh-sach?${
-    status ? statusLink + "=1&" : ""
-  }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
+      status ? statusLink + "=1&" : ""
+    }${sort ? "sort=" + sortLink + "&" : ""}${
+      page ? "page=" + page : "page=1"
+    }`;
   }
 
   const response = await fetch(fetchLink);
   const $ = cheerio.load(await response.text());
 
-  const mangaBlock = $('.thumb-item-flow.col-6.col-md-3')
+  const mangaBlock = $(".thumb-item-flow.col-6.col-md-3");
 
   if (!mangaBlock)
-  return res.status(404).send({
-    status: 404,
-    message: "bad resquest",
-    data: null,
-  });
+    return res.status(404).send({
+      status: 404,
+      message: "bad resquest",
+      data: null,
+    });
   const lastPagesLink = $(".pagination_wrap").find("a:last-child").attr("href");
 
   result.data.currentPage = Number(page ? page : 1);
@@ -150,7 +156,7 @@ app.get("/", async (req, res) => {
       lastPagesLink.slice(lastPagesLink.search("page=") + 5)
     );
   } else {
-    result.data.totalPages = 1
+    result.data.totalPages = 1;
   }
   result.data.mangas = [];
   $(".thumb-item-flow.col-6").map((i, el) => {
@@ -169,7 +175,8 @@ app.get("/", async (req, res) => {
     const lastUpdate = $(el).find(".timeago").attr("datetime");
 
     mangaLink = $(el).find("a").attr("href");
-    const mangaEP = mangaLink.slice(-(mangaLink.length - 39));
+    const mangaEP = mangaLink.split("/truyen-tranh/")[1];
+    console.log("🚀 ~ $ ~ mangaLink:", mangaEP);
 
     const mangaObj = {
       title,
