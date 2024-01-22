@@ -11,7 +11,7 @@ app.get("/:name", async (req, res) => {
     data: {},
   };
 
-  const respond = await fetch(`https://truyentranhlh.net/truyen-tranh/${name}`);
+  const respond = await fetch(`https://truyenlh.com/truyen-tranh/${name}`);
 
   const $ = cheerio.load(await respond.text());
 

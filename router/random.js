@@ -7,7 +7,7 @@ app.get("/", async (req, res) => {
   const randomPage = Math.floor(Math.random() * 288);
 
   const response = await fetch(
-    `https://truyentranhlh.net/tim-kiem?sort=az&reject_genres=25%2C26&page=${randomPage}`
+    `https://truyenlh.com/tim-kiem?sort=az&reject_genres=25%2C26&page=${randomPage}`
   );
 
   const $ = cheerio.load(await response.text());

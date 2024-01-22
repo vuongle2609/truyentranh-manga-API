@@ -12,8 +12,8 @@ app.get("/:name/:chap", async (req, res) => {
     data: {},
   };
 
-  const testL = "https://truyentranhlh.net/truyen-tranh/";
-  const mangaLink = `https://truyentranhlh.net/truyen-tranh/${name}/${chap}`;
+  const testL = "https://truyenlh.com/truyen-tranh/";
+  const mangaLink = `https://truyenlh.com/truyen-tranh/${name}/${chap}`;
   console.log(mangaLink);
   const cut = mangaLink.slice(testL.length);
   const response = await fetch(mangaLink);

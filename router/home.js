@@ -10,7 +10,7 @@ app.get("/", async (req, res) => {
     data: {},
   };
 
-  const response = await fetch("https://truyentranhlh.net/");
+  const response = await fetch("https://truyenlh.com/");
   const $ = cheerio.load(await response.text(), { xmlMode: false });
 
   // get daily data

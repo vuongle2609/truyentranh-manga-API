@@ -47,7 +47,7 @@ app.get("/", async (req, res) => {
       sortLink = "like";
   }
 
-  const fetchApi = `https://truyentranhlh.net/tim-kiem?${
+  const fetchApi = `https://truyenlh.com/tim-kiem?${
     keyWord ? "q=" + keyWord + "&" : ""
   }${artist ? "artist=" + artist + "&" : ""}${
     status ? statusLink + "=1&" : ""

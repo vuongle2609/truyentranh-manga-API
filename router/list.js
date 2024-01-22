@@ -121,11 +121,11 @@ app.get("/", async (req, res) => {
 
   let fetchLink
   if (genre) {
-    fetchLink = `https://truyentranhlh.net/the-loai/${genre}?${
+    fetchLink = `https://truyenlh.com/the-loai/${genre}?${
     status ? statusLink + "=1&" : ""
   }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
   } else if (list) {
-    fetchLink = `https://truyentranhlh.net/danh-sach?${
+    fetchLink = `https://truyenlh.com/danh-sach?${
     status ? statusLink + "=1&" : ""
   }${sort ? "sort=" + sortLink + "&" : ""}${page ? "page=" + page : "page=1"}`;
   }
