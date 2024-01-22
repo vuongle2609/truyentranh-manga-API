@@ -134,7 +134,8 @@ app.get("/:name", async (req, res) => {
     const chapsLink = chap["attribs"]["href"];
     const chapTitle = chap["attribs"]["title"];
     const chapTime = chap["children"][0]["children"][1]["children"][0]["data"];
-    const chapEP = chapsLink.slice(-(chapsLink.length - name.length - 40));
+    const chapEP = chapsLink.split("/")[5];
+
     const chapFormat = {
       chapTime,
       chapTitle,
